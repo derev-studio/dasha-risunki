@@ -2,7 +2,7 @@ backend:
   name: github
   repo: art-vision-studio/dasha-risunki
   branch: main
-  auth_type: oauth
+  client_id: Ov23lizBIoCKY50CRo70
 
 media_folder: "images"
 public_folder: "/images"
@@ -16,5 +16,5 @@ collections:
     fields:
       - {label: "Название", name: "title", widget: "string", required: true}
       - {label: "Описание", name: "description", widget: "text"}
-      - {label: "Цена (₽)", name: "price", widget: "number", value: 1000, required: true}
+      - {label: "Цена (₽)", name: "price", widget: "number", value: 1000}
       - {label: "Картинка", name: "image", widget: "image", required: true, multiple: false}
