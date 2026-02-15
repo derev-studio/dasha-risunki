@@ -1,0 +1,54 @@
+{
+  "collections": [
+    {
+      "name": "gallery",
+      "label": "Галерея",
+      "files": [
+        {
+          "name": "gallery",
+          "label": "Изображения и подписи",
+          "file": "content/gallery.json",
+          "fields": [
+            {
+              "name": "items",
+              "label": "Список картинок",
+              "widget": "list",
+              "fields": [
+                {
+                  "name": "image",
+                  "label": "Картинка",
+                  "widget": "image"
+                },
+                {
+                  "name": "caption_ru",
+                  "label": "Подпись на русском",
+                  "widget": "string"
+                },
+                {
+                  "name": "caption_en",
+                  "label": "Подпись на английском (опционально)",
+                  "widget": "string"
+                },
+                {
+                  "name": "caption_it",
+                  "label": "Подпись на итальянском (опционально)",
+                  "widget": "string"
+                },
+                {
+                  "name": "caption_es",
+                  "label": "Подпись на испанском (опционально)",
+                  "widget": "string"
+                },
+                {
+                  "name": "caption_fr",
+                  "label": "Подпись на французском (опционально)",
+                  "widget": "string"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
