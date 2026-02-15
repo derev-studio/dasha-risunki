@@ -1,5 +1,17 @@
 [
   {
-    "image": "/images/krasota.jpg"
+    "image": "1.jpg",
+    "caption_ru": "Портрет девушки",
+    "caption_en": "Girl portrait"
+  },
+  {
+    "image": "2.jpg", 
+    "caption_ru": "Котик",
+    "caption_en": "Kitty"
+  },
+  {
+    "image": "3.jpg",
+    "caption_ru": "Пейзаж",
+    "caption_en": "Landscape"
   }
 ]
