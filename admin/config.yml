@@ -17,4 +17,4 @@ collections:
       - {label: "Название", name: "title", widget: "string", required: true}
       - {label: "Описание", name: "description", widget: "text"}
       - {label: "Цена (₽)", name: "price", widget: "number", value: 1000, required: true}
-      - {label: "Картинка", name: "image", widget: "image", required: true, allow_multiple: false}
+      - {label: "Картинка", name: "image", widget: "image", required: true, multiple: false}
