@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Простая админка</title>
+    <style>
+        body { font-family: Arial; background: #ffeef2; text-align: center; padding: 50px; }
+        #drop { border: 5px dashed pink; padding: 60px; margin: 30px; font-size: 20px; cursor: pointer; }
+        #drop.drag { border-color: red; background: #fff5f7; }
+        .photo { width: 150px; height: 150px; object-fit: cover; margin: 10px; border-radius: 10px; }
+        button { background: pink; color: white; border: none; padding: 10px 20px; border-radius: 20px; cursor: pointer; margin: 5px; }
+        button:hover { background: red; }
+    </style>
+</head>
+<body>
+    <h1>🌸 Фото Даши</h1>
+    <div id="drop">📁 <br>ПЕРЕТАЩИ ФОТО СЮДА</div>
+    <div id="photos"></div>
+
+    <script>
+        let photos = JSON.parse(localStorage.getItem('dashaPhotos') || '[]');
+        
+        function save() {
+            localStorage.setItem('dashaPhotos', JSON.stringify(photos));
+            showPhotos();
+        }
+        
+        function showPhotos() {
+            document.getElementById('photos').innerHTML = photos.map((photo, i) => 
+                `<img class="photo" src="${photo}"><br>
+                 <button onclick="photos.splice(${i},1);save()">❌ Удалить</button>`
+            ).join('');
+        }
+        
+        // Drag & Drop
+        const drop = document.getElementById('drop');
+        drop.ondragover = e => e.preventDefault();
+        drop.ondrop = e => {
+            e.preventDefault();
+            drop.classList.remove('drag');
+            [...e.dataTransfer.files].forEach(file => {
+                if (file.type.startsWith('image/')) {
+                    const reader = new FileReader();
+                    reader.onload = e => {
+                        photos.unshift(e.target.result);
+                        save();
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+        };
+        drop.ondragenter = () => drop.classList.add('drag');
+        drop.ondragleave = () => drop.classList.remove('drag');
+        
+        showPhotos();
+    </script>
+</body>
+</html>
