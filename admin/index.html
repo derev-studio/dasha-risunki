@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Админка Даши</title>
+  <script src="https://unpkg.com/@sveltia/cms@latest/dist/sveltia-cms.js" type="module"></script>
+  <link rel="stylesheet" href="https://unpkg.com/@sveltia/cms@latest/dist/sveltia-cms.css">
+</head>
+<body>
+  <script type="module">
+    import { registerBackend } from '@sveltia/cms';
+
+    registerBackend('github');
+
+    SveltiaCMS.init({
+      backend: {
+        name: 'github',
+        repo: 'art-vision-studio/dasha-risunki',
+        branch: 'main'
+      },
+      media_folder: 'images',
+      public_folder: '/images',
+      collections: [{
+        name: 'gallery',
+        label: 'Галерея',
+        folder: 'content',
+        create: true,
+        extension: 'json',
+        format: 'json',
+        fields: [{
+          label: 'Картинки',
+          name: 'items',
+          widget: 'list',
+          fields: [
+            { label: 'Картинка', name: 'image', widget: 'image', required: true },
+            { label: 'Подпись RU', name: 'caption_ru', widget: 'string' },
+            { label: 'Подпись EN', name: 'caption_en', widget: 'string' },
+            { label: 'Подпись IT', name: 'caption_it', widget: 'string' },
+            { label: 'Подпись ES', name: 'caption_es', widget: 'string' },
+            { label: 'Подпись FR', name: 'caption_fr', widget: 'string' }
+          ]
+        }]
+      }]
+    });
+  </script>
+</body>
+</html>
