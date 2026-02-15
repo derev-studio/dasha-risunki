@@ -1,0 +1,25 @@
+backend:
+  name: github
+  repo: art-vision-studio/dasha-risunki
+  branch: main
+  base_url: https://netlify-cms-github-oauth-provider-peach.vercel.app
+  auth_endpoint: auth
+
+media_folder: "images"
+public_folder: "/images"
+
+collections:
+  - name: "gallery"
+    label: "Галерея"
+    files:
+      - name: "gallery"
+        label: "Галерея"
+        file: "content/gallery.json"
+        fields:
+          - label: "Работы"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "Название", name: "title", widget: "string", required: false }
+              - { label: "Файл изображения", name: "image", widget: "image" }
+              - { label: "Описание", name: "description", widget: "text", required: false }
